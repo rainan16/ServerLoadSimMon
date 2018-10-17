@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ServerLoad Monitor and Simulator">
+  <meta name="author" content="raineran16">
+  <title>ServerLoad-Simulator-Monitor</title>
+  <link rel="icon" href="favicon.ico">
+
+  <!-- fonts -->
+  <link rel='stylesheet' href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:300">
+
+  <!-- spectre.css - https://github.com/picturepan2/spectre  -->
+  <link rel='stylesheet' href="../node_modules/spectre.css/dist/spectre.min.css">
+  <link rel='stylesheet' href="css/main.css">
+
+  <!-- preloading late-discovered js -->
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="js/frontend.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.15/vue.min.js'></script>
+</head>
+
+<body onload="initClientData()">
+  <!-- navbar header -->
+  <header class="navbar">
+    <section class="navbar-section">
+    </section>
+    <section class="navbar-center">
+    </section>
+    <section class="navbar-section">
+      <a href="#team-modal-1" class="btn">Developer Team</a>
+      <div class="modal" id="team-modal-1">
+        <a href="#modals" class="modal-overlay" aria-label="Close"></a>
+        <div class="modal-container" role="document">
+          <div class="modal-header">
+            <a href="#modals" class="btn btn-clear float-right" aria-label="Close"></a>
+            <div class="modal-title h3">Developers: Team 05</div>
+          </div>
+          <div class="modal-body">
+            <div class="content">
+              <p>raineran16</p>
+              <p>piirojaa16</p>
+              <p>moserben16</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#modals" class="btn btn-primary">Close</a>
+          </div>
+        </div>
+      </div>
+      <a href="http://localhost:15672/" class="btn">RabbitMQ Console</a>
+      <a href="https://git-iit.fh-joanneum.at/raineran16/ServerLoadSimMon" class="btn">Find me on GitLab</a>
+    </section>
+  </header>
+
+  <div id='app'>
+    <h2>ServerLoad-Simulator-Monitor</h2>
+
+    <!-- using flexbox layout system -->
+    <div class="card column col-8">
+      <div class="card-image">
+        <img src="logo.svg" class="img-responsive" />
+      </div>
+      <div class="card-header">
+        <h4 class="card-title">Simulator / Monitor</h4>
+        <h6 id="clientGUID" class="card-subtitle">client GUID</h6>
+      </div>
+      <div id="content" class="card-body">
+        <div id="forms" class="container">
+          <div class="columns">
+            <div class="column col-6 col-sm-12">
+              <form class="form-horizontal" action="#forms">
+                <div class="form-group">
+                  <div class="col-6">
+                    <label class="form-switch">
+                      <input id="checkCPU" type="checkbox" onchange="toggleCheckboxCPU(this)">
+                      <i class="form-icon"></i> CPU load
+                    </label>
+                  </div>
+                  <div class="col-6">
+                    <div class="has-icon-left">
+                      <input id="numCPU" type="number" class="form-input disabled" placeholder="number of processes">
+                      <i class="form-icon icon icon-arrow-right"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-6">
+                    <label class="form-switch">
+                      <input id="checkRAM" type="checkbox" onchange="toggleCheckboxRAM(this)">
+                      <i class="form-icon"></i> Memory load
+                    </label>
+                  </div>
+                  <div class="col-6">
+                    <div class="has-icon-left">
+                      <input id="numRAM" type="number" class="form-input disabled" placeholder="number of processes">
+                      <i class="form-icon icon icon-arrow-right"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-6">
+                    <label class="form-switch">
+                      <input id="checkDB" type="checkbox" onchange="toggleCheckboxDB(this)">
+                      <i class="form-icon"></i> Database load
+                    </label>
+                  </div>
+                  <div class="col-6">
+                    <div class="has-icon-left">
+                      <input id="numDB" type="number" class="form-input disabled" placeholder="number of queries">
+                      <i class="form-icon icon icon-arrow-right"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-6 col-ml-auto">
+                  <button id="btnsim" class="btn btn-primary btn-lg" onclick="startSim()">Start simulation</button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="simulation">
+        <div class="columns">
+          <div class="column col-12 col-sm-12">
+            <div id="statusLabel" class="float-left loading loading-lg" style="display:none">Status</div>
+            <div class="col-12 col-ml-auto">
+              <span id="status" class="secondary label" style="display:none">Connecting...</span>
+            </div>
+          </div>
+
+          <div id="resultBarCPU" class="column col-12 col-xs-12 resultBar" style="display:none">
+            <div class="bar">
+              <div id="resultBarCPU-item" class="bar-item tooltip" data-tooltip="CPU = 99%" style="width:99%;background:#50596c;">CPU = 99%</div>
+            </div>
+          </div>
+
+          <div id="resultBarRAM" class="column col-12 col-xs-12 resultBar" style="display:none">
+            <div class="bar">
+              <div id="resultBarRAM-item" class="bar-item tooltip" data-tooltip="Memory = 99MB" style="width:99%;background:#50596c;">Memory = 99MB</div>
+              <div id="resultBarRAMnodeJS-item" class="bar-item" style="width:0%;background:#8796b4;">0 MB</div>
+            </div>
+          </div>
+
+          <div id="resultBarDB" class="column col-12 col-xs-12 resultBar" style="display:none">
+            <div class="bar">
+              <div id="resultBarDB-item" class="bar-item tooltip" data-tooltip="Database = 99ms" style="width:99%;background:#50596c;">Database = 99ms</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="card-footer">
+        <sub>
+          <span id="resultContent" class="label"></span>
+        </sub>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

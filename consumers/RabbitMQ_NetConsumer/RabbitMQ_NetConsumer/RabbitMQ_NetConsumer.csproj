@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <OutputType>Exe</OutputType>
+    <StartupObject>RabbitMQ_NetConsumer.Consumer</StartupObject>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Product>ServerLoadSimMon</Product>
+    <Company>Disco_SWD16</Company>
+    <Authors>raineran16</Authors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RabbitMQ.Client" Version="5.1.0" />
+    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="4.5.0" />
+  </ItemGroup>
+
+</Project>

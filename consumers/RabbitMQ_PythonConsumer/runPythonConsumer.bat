@@ -1,0 +1,2 @@
+python RabbitMQconsumerReciever.py
+pause

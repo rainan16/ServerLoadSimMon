@@ -1,0 +1,22 @@
+body {
+  /*
+  font-family: 'Open Sans', sans-serif;
+  */
+  background: #e7e9ed;
+  font-size: 16pt;
+  color: #454d5d;
+  padding-left: 1em;
+}
+
+.img-responsive {
+	margin: 1em;
+}
+
+.bar {
+  height: 1.8rem;
+}
+
+.resultBar {
+  padding-top: 0.8rem;
+  padding-bottom: 0.2rem;
+}

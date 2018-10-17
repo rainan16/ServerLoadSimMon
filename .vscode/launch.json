@@ -1,0 +1,29 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Server",
+            "program": "${workspaceFolder}/server.js"
+        },
+        {
+            "name": "Launch index.html",
+            "type": "firefox",
+            "request": "launch",
+            "reAttach": true,
+            "file": "C:/Users/andre/Documents/%23FH/ServerLoadSimMon/public/index.html"
+        },
+        {
+            "name": "Launch localhost",
+            "type": "firefox",
+            "request": "launch",
+            "reAttach": true,
+            "url": "http://localhost/index.html",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}
