@@ -1,6 +1,7 @@
 # custom
 consumers/RabbitMQ_JavaConsumer/target
 consumers/RabbitMQ_JavaConsumer/RabbitMQ_JavaConsumer.iml
+.vscode
 
 # Logs
 logs
