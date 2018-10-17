@@ -1,7 +1,5 @@
 # Server-Load-Simulator-Monitor
 
-A fast :fast_forward: server load simulation and monitoring tool, using HTML5 :page_facing_up:, javascript :page_with_curl:, node.js :satellite:, websockets :rocket:, RabbitMQ :rabbit: and bunyan for logging :book:.
-
 ## Quickstart
 :exclamation: **`ATTENTION`** :exclamation: **`Currently tested on Windows 10 only!`**
 
