@@ -8,9 +8,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://git-iit.fh-joanneum.at/raineran16/ServerLoadSimMon.git"
+    "url": "https://github.com/rainan16/ServerLoadSimMon.git"
   },
-  "author": "raineran16",
+  "author": "rainan16",
   "license": "UNLICENSED",
   "dependencies": {
     "amqplib": "^0.5.2",
@@ -19,6 +19,7 @@
     "jquery": "^3.4.0",
     "npm": "^6.13.4",
     "spectre.css": "^0.5.2",
-    "websocket": "^1.0.26"
+    "websocket": "^1.0.26",
+    "minimist": ">=1.2.2"
   }
 }
