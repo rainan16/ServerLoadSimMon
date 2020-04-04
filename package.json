@@ -20,6 +20,6 @@
     "npm": "^6.13.4",
     "spectre.css": "^0.5.2",
     "websocket": "^1.0.26",
-    "minimist": ">=1.2.2"
+    "minimist": ">=1.2.3"
   }
 }
