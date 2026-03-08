@@ -17,9 +17,9 @@
     "bunyan": "^1.8.12",
     "cpu-stat": "^2.0.1",
     "jquery": "^3.5.0",
-    "npm": "^9.7.2",
+    "npm": "^11.11.0",
     "spectre.css": "^0.5.2",
     "websocket": "^1.0.26",
-    "minimist": ">=1.2.6"
+    "minimist": ">=1.2.7"
   }
 }
